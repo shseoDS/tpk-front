@@ -24,6 +24,20 @@ jobs:
         env:
           VITE_API_BASE_URL: ${{ secrets.VITE_API_BASE_URL }}
 
+      # 1. SCP 전송 전에 폴더를 생성하고 권한을 내 계정으로 변경
+      - name: Prepare target directory
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.DEV_HOST }}
+          username: ${{ secrets.DEV_USER }}
+          key: ${{ secrets.DEV_SSH_KEY }}
+          port: ${{ secrets.DEV_PORT }}
+          script: |
+            sudo mkdir -p /srv/tpk-mvp/fe
+            sudo chown -R ${{ secrets.DEV_USER }}:${{ secrets.DEV_USER }} /srv/tpk-mvp/fe
+            sudo chmod -R 755 /srv/tpk-mvp/fe
+
+      # 2. 이제 파일 전송 (권한 문제가 해결됨)
       - name: Deploy to Server via SCP
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -35,7 +49,8 @@ jobs:
           target: "/srv/tpk-mvp/fe"
           strip_components: 1
 
-      - name: Set permissions via SSH
+      # 3. 배포 후 Nginx가 읽을 수 있도록 최종 권한 조정 (선택사항)
+      - name: Finalize permissions
         uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.DEV_HOST }}
@@ -43,4 +58,4 @@ jobs:
           key: ${{ secrets.DEV_SSH_KEY }}
           port: ${{ secrets.DEV_PORT }}
           script: |
-            chmod -R 755 /srv/tpk-mvp/fe
+            sudo chmod -R 755 /srv/tpk-mvp/fe
