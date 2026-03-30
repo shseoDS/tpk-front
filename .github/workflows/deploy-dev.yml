@@ -26,7 +26,7 @@ jobs:
         env:
           VITE_API_BASE_URL: ${{ secrets.VITE_API_BASE_URL }}
 
-      # 1. 임시 디렉토리에 파일 전송 (원자적 배포 준비)
+      # 1. 임시 디렉토리 준비 (원자적 배포 준비)
       - name: Prepare temp directory
         uses: appleboy/ssh-action@v1.0.3
         with:
