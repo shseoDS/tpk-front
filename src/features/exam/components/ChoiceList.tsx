@@ -24,7 +24,7 @@ export default function ChoiceList({
 }: ChoiceListProps) {
   function getStyle(idx: number): string {
     const base =
-      'w-full flex items-start gap-3 p-4 rounded-xl border text-left typography-body-3 transition-all ';
+      'w-full flex items-center gap-3 p-4 rounded-xl border text-left typography-body-3 transition-all ';
 
     if (answerState === 'idle') {
       return (

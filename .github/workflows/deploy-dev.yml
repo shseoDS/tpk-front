@@ -3,6 +3,7 @@ name: Deploy Front to Dev Server
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -10,35 +11,36 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.2.2
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v4.4.0
         with:
           node-version: '20'
+          cache: 'npm'
 
       - name: Install & Build
         run: |
-          npm install
+          npm ci
           npm run build
         env:
           VITE_API_BASE_URL: ${{ secrets.VITE_API_BASE_URL }}
 
-      # 1. SCP 전송 전에 폴더를 생성하고 권한을 내 계정으로 변경
-      - name: Prepare target directory
-        uses: appleboy/ssh-action@v1
+      # 1. 임시 디렉토리에 파일 전송 (원자적 배포 준비)
+      - name: Prepare temp directory
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.DEV_HOST }}
           username: ${{ secrets.DEV_USER }}
           key: ${{ secrets.DEV_SSH_KEY }}
           port: ${{ secrets.DEV_PORT }}
           script: |
-            sudo mkdir -p /srv/tpk-mvp/fe
-            sudo chown -R ${{ secrets.DEV_USER }}:${{ secrets.DEV_USER }} /srv/tpk-mvp/fe
-            sudo chmod -R 755 /srv/tpk-mvp/fe
+            sudo rm -rf /srv/tpk-mvp/fe_tmp
+            sudo mkdir -p /srv/tpk-mvp/fe_tmp
+            sudo chown -R ${{ secrets.DEV_USER }}:${{ secrets.DEV_USER }} /srv/tpk-mvp/fe_tmp
 
-      # 2. 이제 파일 전송 (권한 문제가 해결됨)
-      - name: Deploy to Server via SCP
+      # 2. 임시 디렉토리로 빌드 파일 전송
+      - name: Upload build to temp directory
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.DEV_HOST }}
@@ -46,16 +48,22 @@ jobs:
           key: ${{ secrets.DEV_SSH_KEY }}
           port: ${{ secrets.DEV_PORT }}
           source: "dist/*"
-          target: "/srv/tpk-mvp/fe"
+          target: "/srv/tpk-mvp/fe_tmp"
           strip_components: 1
 
-      # 3. 배포 후 Nginx가 읽을 수 있도록 최종 권한 조정 (선택사항)
-      - name: Finalize permissions
-        uses: appleboy/ssh-action@v1
+      # 3. 원자적 교체 + 권한 조정 + 헬스 체크
+      - name: Swap directories, finalize & health check
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.DEV_HOST }}
           username: ${{ secrets.DEV_USER }}
           key: ${{ secrets.DEV_SSH_KEY }}
           port: ${{ secrets.DEV_PORT }}
           script: |
+            sudo rm -rf /srv/tpk-mvp/fe_old
+            [ -d /srv/tpk-mvp/fe ] && sudo mv /srv/tpk-mvp/fe /srv/tpk-mvp/fe_old
+            sudo mv /srv/tpk-mvp/fe_tmp /srv/tpk-mvp/fe
             sudo chmod -R 755 /srv/tpk-mvp/fe
+            sudo nginx -s reload
+            sleep 2
+            curl -sf http://localhost/ -o /dev/null && echo "Health check passed" || (echo "Health check failed" && exit 1)
