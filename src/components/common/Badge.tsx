@@ -13,7 +13,7 @@ const variantClass = {
 
 export default function Badge({ children, variant = 'gray' }: BadgeProps) {
   return (
-    <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${variantClass[variant]}`}>
+    <span className={`inline-flex items-center px-2 py-0.5 rounded-full typography-caption-4 ${variantClass[variant]}`}>
       {children}
     </span>
   );

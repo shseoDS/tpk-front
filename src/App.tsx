@@ -5,6 +5,7 @@ import ExamListPage from '@/pages/ExamListPage';
 import ExamDetailPage from '@/pages/ExamDetailPage';
 import QuestionPage from '@/pages/QuestionPage';
 import PracticePage from '@/pages/PracticePage';
+import MembershipPage from '@/pages/MembershipPage';
 import NotFoundPage from '@/pages/NotFoundPage';
 
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
             <Route path="/exams/:examKey" element={<ExamDetailPage />} />
             <Route path="/exams/:examKey/questions" element={<QuestionPage />} />
             <Route path="/practice" element={<PracticePage />} />
+            <Route path="/membership" element={<MembershipPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>

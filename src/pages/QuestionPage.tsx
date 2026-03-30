@@ -9,6 +9,7 @@ import QuestionCard from '@/features/exam/components/QuestionCard';
 import ChoiceList from '@/features/exam/components/ChoiceList';
 import FeedbackCard from '@/features/exam/components/FeedbackCard';
 import LoadingSpinner from '@/components/common/LoadingSpinner';
+import SLButton from '@/components/common/SLButton';
 
 export default function QuestionPage() {
   const { examKey } = useParams<{ examKey: string }>();
@@ -194,24 +195,23 @@ export default function QuestionPage() {
           style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
         >
           {!submitted ? (
-            <button
-              onClick={handleSubmit}
+            <SLButton
+              variant="primary"
+              fullWidth
               disabled={selectedIdx === null}
-              className="flex-1 py-4 rounded-2xl font-bold text-sm bg-blue-600 hover:bg-blue-700 disabled:bg-gray-200 dark:disabled:bg-gray-700 disabled:text-gray-400 dark:disabled:text-gray-500 text-white transition-colors"
+              onClick={handleSubmit}
+              className="py-4"
             >
               정답 확인
-            </button>
+            </SLButton>
           ) : (
             <>
-              <button
-                onClick={handleRetry}
-                className="py-4 px-5 rounded-2xl font-semibold text-sm border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
-              >
+              <SLButton variant="outlined" onClick={handleRetry} className="px-5 py-4">
                 다시 풀기
-              </button>
+              </SLButton>
               <button
                 onClick={handleNext}
-                className="flex-1 py-4 rounded-2xl font-bold text-sm bg-gray-900 dark:bg-white hover:bg-gray-700 dark:hover:bg-gray-200 text-white dark:text-gray-900 transition-colors"
+                className="flex-1 py-4 rounded-[12px] typography-body-2 bg-gray-900 dark:bg-white hover:bg-gray-700 dark:hover:bg-gray-200 text-white dark:text-gray-900 transition-colors"
               >
                 {isLast ? '완료' : '다음 문제 →'}
               </button>

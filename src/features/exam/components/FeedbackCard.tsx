@@ -54,11 +54,11 @@ export default function FeedbackCard({
           )}
         </div>
         <div>
-          <p className={`font-bold text-sm ${isCorrect ? 'text-green-700 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
+          <p className={`typography-body-2 ${isCorrect ? 'text-green-700 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
             {isCorrect ? '정답입니다!' : '오답입니다.'}
           </p>
           {!isCorrect && (
-            <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+            <p className="typography-caption-4 text-gray-500 dark:text-gray-400 mt-0.5">
               정답: <strong className="text-gray-700 dark:text-gray-200">{CHOICE_LABELS[correctAnswer - 1]} ({correctAnswer}번)</strong>
             </p>
           )}
@@ -74,10 +74,10 @@ export default function FeedbackCard({
               : 'bg-red-50 border-red-100 dark:bg-red-900/10 dark:border-red-800'
           }`}
         >
-          <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1.5">
+          <p className="typography-caption-3 text-gray-500 dark:text-gray-400 mb-1.5">
             {CHOICE_LABELS[selectedChoice - 1]} 선택 해설
           </p>
-          <p className={`text-sm leading-relaxed ${
+          <p className={`typography-body-3 leading-relaxed ${
             isCorrect ? 'text-green-800 dark:text-green-300' : 'text-red-700 dark:text-red-300'
           }`}>
             {selectedFeedbackText}
@@ -88,10 +88,10 @@ export default function FeedbackCard({
       {/* 정답 해설 (오답일 때만) */}
       {showCorrectFeedback && correctFeedbackText && (
         <div className="p-4 rounded-xl border bg-green-50 border-green-100 dark:bg-green-900/10 dark:border-green-800">
-          <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1.5">
+          <p className="typography-caption-3 text-gray-500 dark:text-gray-400 mb-1.5">
             {CHOICE_LABELS[correctAnswer - 1]} 정답 해설
           </p>
-          <p className="text-sm leading-relaxed text-green-800 dark:text-green-300">
+          <p className="typography-body-3 leading-relaxed text-green-800 dark:text-green-300">
             {correctFeedbackText}
           </p>
         </div>

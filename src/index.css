@@ -1,5 +1,160 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Pretendard';
+  src: url('/src/assets/fonts/Pretendard-Thin.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('/src/assets/fonts/Pretendard-ExtraLight.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('/src/assets/fonts/Pretendard-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('/src/assets/fonts/Pretendard-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('/src/assets/fonts/Pretendard-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('/src/assets/fonts/Pretendard-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('/src/assets/fonts/Pretendard-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('/src/assets/fonts/Pretendard-ExtraBold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('/src/assets/fonts/Pretendard-Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  /* Blue */
+  --color-blue-b5: #F0F9FD;
+  --color-blue-b10: #DAF0FE;
+  --color-blue-b20: #B8E1FD;
+  --color-blue-b30: #93CEFC;
+  --color-blue-b40: #6BB8FB;
+  --color-blue-b50: #3592FD; /* Primary Color */
+  --color-blue-b60: #1D7FEF;
+  --color-blue-b70: #0C6AD3;
+  --color-blue-b80: #0659B2;
+  --color-blue-b90: #033D80;
+
+  /* Neutral */
+  --color-neutral-n0: #FFFFFF;
+  --color-neutral-n5: #FBFBFB;
+  --color-neutral-n10: #F6F8FA;
+  --color-neutral-n20: #F2F4F5; /* BG Color */
+  --color-neutral-n30: #EEEFEF;
+  --color-neutral-n35: #DFE3E6;
+  --color-neutral-n40: #CFD4D9;
+  --color-neutral-n45: #BCC2C9;
+  --color-neutral-n50: #9CA2A8;
+  --color-neutral-n60: #868889;
+  --color-neutral-n70: #676B6E;
+  --color-neutral-n80: #606571;
+  --color-neutral-n90: #525457;
+  --color-neutral-n100: #2A2B2D;
+
+  /* Semantic aliases */
+  --color-primary: #3592FD;
+  --color-bg: #F2F4F5;
+
+  /* Font family */
+  --font-sans: 'Pretendard', sans-serif;
+
+  /* Font sizes */
+  --text-heading-1: 24px;
+  --text-heading-2: 24px;
+  --text-heading-3: 22px;
+  --text-heading-4: 20px;
+  --text-subtitle-1: 18px;
+  --text-subtitle-2: 18px;
+  --text-subtitle-3: 16px;
+  --text-subtitle-4: 16px;
+  --text-body-1: 16px;
+  --text-body-2: 14px;
+  --text-body-3: 14px;
+  --text-body-4: 14px;
+  --text-caption-1: 13px;
+  --text-caption-2: 13px;
+  --text-caption-3: 12px;
+  --text-caption-4: 12px;
+  --text-caption-5: 11px;
+}
+
+@layer components {
+  /* Heading */
+  .typography-heading-1 { font-size: 24px; font-weight: 700; line-height: 32px; }
+  .typography-heading-2 { font-size: 24px; font-weight: 600; line-height: 32px; }
+  .typography-heading-3 { font-size: 22px; font-weight: 600; line-height: 32px; }
+  .typography-heading-4 { font-size: 20px; font-weight: 600; line-height: 28px; }
+
+  /* Subtitle */
+  .typography-subtitle-1 { font-size: 18px; font-weight: 700; line-height: 24px; }
+  .typography-subtitle-2 { font-size: 18px; font-weight: 600; line-height: 24px; }
+  .typography-subtitle-3 { font-size: 16px; font-weight: 700; line-height: 24px; }
+  .typography-subtitle-4 { font-size: 16px; font-weight: 600; line-height: 24px; }
+
+  /* Body */
+  .typography-body-1 { font-size: 16px; font-weight: 500; line-height: 24px; }
+  .typography-body-2 { font-size: 14px; font-weight: 600; line-height: 20px; }
+  .typography-body-3 { font-size: 14px; font-weight: 500; line-height: 24px; }
+  .typography-body-4 { font-size: 14px; font-weight: 500; line-height: 20px; }
+
+  /* Caption */
+  .typography-caption-1 { font-size: 13px; font-weight: 600; line-height: 20px; }
+  .typography-caption-2 { font-size: 13px; font-weight: 500; line-height: 20px; }
+  .typography-caption-3 { font-size: 12px; font-weight: 600; line-height: 16px; }
+  .typography-caption-4 { font-size: 12px; font-weight: 500; line-height: 16px; }
+  .typography-caption-5 { font-size: 11px; font-weight: 500; line-height: 16px; }
+}
+
 :root {
   color-scheme: light dark;
 }
@@ -10,6 +165,7 @@
 
 body {
   margin: 0;
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

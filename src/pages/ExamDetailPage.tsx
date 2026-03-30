@@ -5,6 +5,7 @@ import { EXAM_TYPE_MAP, TPK_LEVEL_MAP, SECTION_MAP } from '@/features/exam/types
 import Badge from '@/components/common/Badge';
 import LoadingSpinner from '@/components/common/LoadingSpinner';
 import ErrorState from '@/components/common/ErrorState';
+import SLButton from '@/components/common/SLButton';
 
 export default function ExamDetailPage() {
   const { examKey } = useParams<{ examKey: string }>();
@@ -54,7 +55,7 @@ export default function ExamDetailPage() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
         </Link>
-        <h1 className="text-lg font-bold text-gray-900 dark:text-white">
+        <h1 className="typography-subtitle-1 text-gray-900 dark:text-white">
           {exam?.exam_year}년 {exam?.round}회차
         </h1>
       </div>
@@ -73,20 +74,20 @@ export default function ExamDetailPage() {
 
         <div className="grid grid-cols-3 divide-x divide-gray-100 dark:divide-gray-700">
           <div className="flex flex-col items-center gap-1 px-2">
-            <span className="text-2xl font-bold text-gray-900 dark:text-white">{total}</span>
-            <span className="text-xs text-gray-400">총 문제</span>
+            <span className="typography-heading-1 text-gray-900 dark:text-white">{total}</span>
+            <span className="typography-caption-4 text-gray-400">총 문제</span>
           </div>
           <div className="flex flex-col items-center gap-1 px-2">
-            <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+            <span className="typography-heading-1 text-blue-600 dark:text-blue-400">
               {questions.reduce((sum, q) => sum + (q.score ?? 0), 0)}
             </span>
-            <span className="text-xs text-gray-400">총 점수</span>
+            <span className="typography-caption-4 text-gray-400">총 점수</span>
           </div>
           <div className="flex flex-col items-center gap-1 px-2">
-            <span className="text-2xl font-bold text-gray-900 dark:text-white">
+            <span className="typography-heading-1 text-gray-900 dark:text-white">
               {exam?.exam_year}
             </span>
-            <span className="text-xs text-gray-400">출제 연도</span>
+            <span className="typography-caption-4 text-gray-400">출제 연도</span>
           </div>
         </div>
       </div>
@@ -100,14 +101,14 @@ export default function ExamDetailPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </span>
-            <span className="text-sm font-semibold text-blue-700 dark:text-blue-300">
+            <span className="typography-body-2 text-blue-700 dark:text-blue-300">
               이전 진행 기록이 있습니다
             </span>
           </div>
 
           {/* 진행 바 */}
           <div className="mb-3">
-            <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400 mb-1">
+            <div className="flex justify-between typography-caption-4 text-gray-500 dark:text-gray-400 mb-1">
               <span>{progressIndex + 1}번째 문제 진행 중</span>
               <span>{answeredCount} / {total} 완료</span>
             </div>
@@ -120,37 +121,33 @@ export default function ExamDetailPage() {
           </div>
 
           <div className="flex gap-2">
-            <button
-              onClick={handleResume}
-              className="flex-1 py-2.5 rounded-xl text-sm font-semibold bg-blue-600 hover:bg-blue-700 text-white transition-colors"
-            >
+            <SLButton variant="primary" fullWidth onClick={handleResume}>
               이어서 하기
-            </button>
-            <button
-              onClick={handleStart}
-              className="flex-1 py-2.5 rounded-xl text-sm font-semibold bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-50 transition-colors"
-            >
+            </SLButton>
+            <SLButton variant="outlined" fullWidth onClick={handleStart}>
               처음부터
-            </button>
+            </SLButton>
           </div>
         </div>
       )}
 
       {/* 시작하기 버튼 (진행 기록 없을 때) */}
       {!hasProgress && (
-        <button
-          onClick={handleStart}
+        <SLButton
+          variant="primary"
+          fullWidth
           disabled={total === 0}
-          className="w-full py-4 rounded-2xl font-bold text-base bg-blue-600 hover:bg-blue-700 disabled:bg-gray-200 disabled:text-gray-400 dark:disabled:bg-gray-700 text-white transition-colors shadow-sm shadow-blue-200 dark:shadow-none"
+          onClick={handleStart}
+          className="py-4 shadow-sm shadow-blue-200 dark:shadow-none"
         >
           시작하기 →
-        </button>
+        </SLButton>
       )}
 
       {total === 0 && (
         <div className="text-center py-16 text-gray-400 dark:text-gray-500 mt-4">
           <p className="text-3xl mb-3">📭</p>
-          <p className="text-sm">등록된 문제가 없습니다.</p>
+          <p className="typography-body-4">등록된 문제가 없습니다.</p>
         </div>
       )}
     </div>

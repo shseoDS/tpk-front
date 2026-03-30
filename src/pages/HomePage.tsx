@@ -12,10 +12,10 @@ export default function HomePage() {
     <div className="max-w-2xl mx-auto px-4 py-6 w-full">
       {/* Hero */}
       <div className="mb-8 text-center">
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+        <h1 className="typography-heading-1 text-gray-900 dark:text-white mb-2">
           한국어능력시험 기출문제
         </h1>
-        <p className="text-gray-500 dark:text-gray-400 text-sm">
+        <p className="typography-body-4 text-gray-500 dark:text-gray-400">
           TOPIK 기출문제로 실력을 키워보세요
         </p>
       </div>
@@ -27,22 +27,22 @@ export default function HomePage() {
           className="flex flex-col items-center gap-2 p-5 bg-blue-50 dark:bg-blue-900/20 rounded-2xl border border-blue-100 dark:border-blue-800 hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-colors"
         >
           <span className="text-3xl">📋</span>
-          <span className="font-semibold text-blue-700 dark:text-blue-300 text-sm">기출문제 풀기</span>
+          <span className="typography-body-2 text-blue-700 dark:text-blue-300">기출문제 풀기</span>
         </Link>
         <Link
           to="/practice"
           className="flex flex-col items-center gap-2 p-5 bg-green-50 dark:bg-green-900/20 rounded-2xl border border-green-100 dark:border-green-800 hover:bg-green-100 dark:hover:bg-green-900/40 transition-colors"
         >
           <span className="text-3xl">✏️</span>
-          <span className="font-semibold text-green-700 dark:text-green-300 text-sm">유형별 연습</span>
+          <span className="typography-body-2 text-green-700 dark:text-green-300">유형별 연습</span>
         </Link>
       </div>
 
       {/* Recent Exams */}
       <section>
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-base font-bold text-gray-900 dark:text-white">최근 시험</h2>
-          <Link to="/exams" className="text-sm text-blue-600 dark:text-blue-400 hover:underline">
+          <h2 className="typography-subtitle-3 text-gray-900 dark:text-white">최근 시험</h2>
+          <Link to="/exams" className="typography-body-4 text-blue-600 dark:text-blue-400 hover:underline">
             전체보기 →
           </Link>
         </div>
@@ -58,7 +58,7 @@ export default function HomePage() {
                   className="flex items-center justify-between p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-700 hover:shadow-sm transition-all"
                 >
                   <div className="flex flex-col gap-1.5">
-                    <span className="font-medium text-gray-900 dark:text-white text-sm">
+                    <span className="typography-body-4 text-gray-900 dark:text-white">
                       {exam.exam_year}년 {exam.round}회차
                     </span>
                     <div className="flex gap-1.5 flex-wrap">

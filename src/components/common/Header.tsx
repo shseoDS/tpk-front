@@ -14,7 +14,7 @@ export default function Header() {
       style={{ paddingTop: 'env(safe-area-inset-top)' }}
     >
       <div className="max-w-2xl mx-auto px-4 h-14 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 font-bold text-blue-600 dark:text-blue-400 text-lg">
+        <Link to="/" className="flex items-center gap-2 typography-subtitle-1 text-blue-600 dark:text-blue-400">
           <span className="text-xl">📝</span>
           TOPIK
         </Link>
@@ -23,7 +23,7 @@ export default function Header() {
             <Link
               key={item.path}
               to={item.path}
-              className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+              className={`px-3 py-1.5 rounded-lg typography-body-4 transition-colors ${
                 location.pathname.startsWith(item.path)
                   ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300'
                   : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-800'

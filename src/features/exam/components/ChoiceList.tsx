@@ -24,7 +24,7 @@ export default function ChoiceList({
 }: ChoiceListProps) {
   function getStyle(idx: number): string {
     const base =
-      'w-full flex items-start gap-3 p-4 rounded-xl border text-left text-sm transition-all ';
+      'w-full flex items-start gap-3 p-4 rounded-xl border text-left typography-body-3 transition-all ';
 
     if (answerState === 'idle') {
       return (
@@ -47,7 +47,7 @@ export default function ChoiceList({
 
   function getLabelStyle(idx: number): string {
     const base =
-      'shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-colors ';
+      'shrink-0 w-7 h-7 rounded-full flex items-center justify-center typography-caption-3 transition-colors ';
 
     if (answerState === 'idle') {
       return (

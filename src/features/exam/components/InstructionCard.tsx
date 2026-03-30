@@ -14,7 +14,7 @@ export default function InstructionCard({ fullSentence, paragraph }: Instruction
               d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
           </svg>
         </span>
-        <p className="text-sm font-medium text-indigo-800 dark:text-indigo-200 leading-relaxed">
+        <p className="typography-body-4 text-indigo-800 dark:text-indigo-200 leading-relaxed">
           {fullSentence}
         </p>
       </div>
@@ -22,7 +22,7 @@ export default function InstructionCard({ fullSentence, paragraph }: Instruction
       {/* 독해 지문 (있을 때만) */}
       {paragraph && (
         <div className="bg-white dark:bg-gray-800/60 px-4 py-4 border-t border-indigo-100 dark:border-indigo-800/60">
-          <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-wrap">
+          <p className="typography-body-3 text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-wrap">
             {paragraph}
           </p>
         </div>

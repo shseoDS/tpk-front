@@ -1,3 +1,5 @@
+import SLButton from '@/components/common/SLButton';
+
 interface ExitConfirmModalProps {
   onContinue: () => void;
   onExit: () => void;
@@ -22,27 +24,21 @@ export default function ExitConfirmModal({ onContinue, onExit }: ExitConfirmModa
                   d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
               </svg>
             </div>
-            <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
+            <h2 className="typography-subtitle-1 text-gray-900 dark:text-white mb-1">
               시험을 종료하시겠습니까?
             </h2>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
+            <p className="typography-body-3 text-gray-500 dark:text-gray-400">
               지금까지의 진행 상황은 저장됩니다.
             </p>
           </div>
 
           <div className="flex flex-col gap-2.5">
-            <button
-              onClick={onContinue}
-              className="w-full py-3.5 rounded-xl font-semibold text-sm bg-blue-600 hover:bg-blue-700 text-white transition-colors"
-            >
+            <SLButton variant="primary" fullWidth onClick={onContinue}>
               계속 진행하기
-            </button>
-            <button
-              onClick={onExit}
-              className="w-full py-3.5 rounded-xl font-semibold text-sm bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-750 transition-colors"
-            >
+            </SLButton>
+            <SLButton variant="outlined" fullWidth onClick={onExit}>
               종료
-            </button>
+            </SLButton>
           </div>
         </div>
       </div>

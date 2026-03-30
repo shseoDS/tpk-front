@@ -31,7 +31,7 @@ export default function ExamListPage() {
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-6 w-full">
-      <h1 className="text-xl font-bold text-gray-900 dark:text-white mb-5">기출문제</h1>
+      <h1 className="typography-heading-4 text-gray-900 dark:text-white mb-5">기출문제</h1>
 
       {/* 필터 */}
       <div className="flex gap-2 mb-5 overflow-x-auto pb-1 scrollbar-none">
@@ -39,7 +39,7 @@ export default function ExamListPage() {
           <button
             key={item.value}
             onClick={() => setTpkLevel(item.value)}
-            className={`shrink-0 px-3 py-1.5 rounded-full text-sm font-medium border transition-colors ${
+            className={`shrink-0 px-3 py-1.5 rounded-full typography-body-4 border transition-colors ${
               tpkLevel === item.value
                 ? 'bg-blue-600 text-white border-blue-600'
                 : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-blue-400'
@@ -53,7 +53,7 @@ export default function ExamListPage() {
           <button
             key={item.value}
             onClick={() => setSection(item.value)}
-            className={`shrink-0 px-3 py-1.5 rounded-full text-sm font-medium border transition-colors ${
+            className={`shrink-0 px-3 py-1.5 rounded-full typography-body-4 border transition-colors ${
               section === item.value
                 ? 'bg-green-600 text-white border-green-600'
                 : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-green-400'
@@ -70,7 +70,7 @@ export default function ExamListPage() {
       {exams && exams.length === 0 && (
         <div className="text-center py-16 text-gray-400 dark:text-gray-500">
           <p className="text-3xl mb-3">📭</p>
-          <p className="text-sm">해당 조건의 시험이 없습니다.</p>
+          <p className="typography-body-4">해당 조건의 시험이 없습니다.</p>
         </div>
       )}
 
@@ -83,7 +83,7 @@ export default function ExamListPage() {
                 className="flex items-center justify-between p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-700 hover:shadow-sm transition-all"
               >
                 <div className="flex flex-col gap-1.5 min-w-0">
-                  <span className="font-semibold text-gray-900 dark:text-white text-sm truncate">
+                  <span className="typography-body-2 text-gray-900 dark:text-white truncate">
                     {exam.exam_year}년 {exam.round}회차
                   </span>
                   <div className="flex gap-1.5 flex-wrap">

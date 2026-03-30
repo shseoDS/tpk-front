@@ -14,7 +14,7 @@ export default function ProgressBar({ current, total }: ProgressBarProps) {
           style={{ width: `${pct}%` }}
         />
       </div>
-      <span className="text-xs text-gray-400 dark:text-gray-500 shrink-0 tabular-nums">
+      <span className="typography-caption-4 text-gray-400 dark:text-gray-500 shrink-0 tabular-nums">
         {current} / {total}
       </span>
     </div>
